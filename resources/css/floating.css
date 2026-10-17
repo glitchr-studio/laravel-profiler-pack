@@ -1,0 +1,602 @@
+/* The floating bar: a rounded bar over the page's bottom right corner, in
+   place of the strip across its bottom, as glitchr/symfony-profiler-pack
+   floats Symfony's web debug toolbar (the same rules, on the same classes).
+   Every rule is under a .sf-toolbar* class of the bar: nothing here reaches
+   the page being debugged. */
+.sf-toolbar-block:hover .sf-toolbar-info
+{
+  position:fixed;
+  left: auto !important;
+}
+
+.sf-toolbarreset .hide-button {
+  z-index: 20000;
+  top:auto;
+  position:fixed;
+  color: white;
+  height:36px;
+}
+
+.sf-toolbar-block .sf-toolbar-info-piece .sf-toolbar-status
+{
+    border-radius:0;
+    margin:0;
+}
+
+.sf-toolbar-block { background-color: #222; }
+.sf-toolbar, .sf-toolbar-clearer {
+  z-index: 9999999 !important;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  right:5em;
+}
+
+.sf-toolbar-block .sf-toolbar-info-piece b { text-align: right; }
+.sf-toolbar-block .sf-toolbar-icon:empty { padding:0; }
+
+.sf-toolbar-block .sf-toolbar-info { bottom:35px; }
+
+div.sf-toolbar .sf-toolbar-block .sf-toolbar-info-piece a { padding:0 0.25em; }
+
+.sf-toolbar.sf-toolbar-opened .sf-toolbar-toggle-button .sf-toolbar-icon-opened
+{
+    right: 2em;
+}
+
+.sf-toolbar-closed .sf-toolbarreset { padding: 0; }
+.sf-toolbar {
+
+    margin: 1.5em 3em 1.5em 0em;
+}
+.sf-toolbarreset {
+
+    padding: 0.25em 0em 0.25em 1em;
+    border-radius: 1em;
+    background-color: #222C;
+    box-shadow: inset 0 1px 0 #222C, 0 -1px 0 rgba(0, 0, 0, 0.5);
+
+    position: initial !important;
+
+    display: flex;
+    overflow: scroll;
+    width: calc(95vw - 4em);
+    margin-right: 0em;
+}
+
+.sf-cancel-button {
+    border-radius: 1em;
+    border: 0;
+}
+
+.sf-toolbarreset {
+    width: calc(95vw - 4em);
+    transition: all 0.1s, width 0s;
+    cursor: move; /* Fallback for unsupported browsers */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.sf-toolbar-closed .sf-toolbarreset::before { display:none; }
+.sf-toolbarreset::before {
+    content: '';
+    width: 5px;
+    margin: 6.5px 0;
+    cursor: ew-resize;
+    background: linear-gradient(to right, #999 0 1px, transparent 0px 6px, #999 6px 9px);
+    z-index: 1000;
+    pointer-events: auto;
+    min-width:5px;
+}
+
+.sf-toolbarreset::-webkit-scrollbar { display: none; }
+.sf-toolbarreset {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sf-toolbar-closed .sf-toolbarreset .sf-toolbar-toggle-button
+{
+    padding: 1px;
+}
+
+.sf-toolbarreset .sf-toolbar-toggle-button
+{
+    background-color: #222C;
+    border-radius: 1em;
+
+    position: right;
+    margin-right: -5em;
+
+    position: absolute;
+    padding: 2px;
+
+}
+.sf-toolbar-block
+{
+    background-color: transparent;
+    border-radius: 1em;
+}
+.sf-toolbar-block .sf-toolbar-info, .sf-toolbar-block:hover .sf-toolbar-info, .sf-toolbar-block.hover .sf-toolbar-info {
+    padding: 2em 0 !important;
+    margin: 0;
+    border-radius: 1em 1em 1em 0;
+    background: transparent;
+}
+
+.sf-toolbar-info { table-layout: fixed; }
+
+.sf-toolbar-info .sf-toolbar-info-piece:first-child > *:first-child { border-top-left-radius: 0.8em; }
+.sf-toolbar-info .sf-toolbar-info-piece:first-child > *:last-child { border-top-right-radius: 0.8em; }
+.sf-toolbar-info .sf-toolbar-info-piece:last-child > *:first-child { border-bottom-left-radius: 0.8em; }
+.sf-toolbar-info .sf-toolbar-info-piece:last-child > *:last-child { border-bottom-right-radius: 0.8em; }
+
+.sf-toolbar-info .sf-toolbar-info-piece > *:last-child {
+    line-height: 1.9;
+    padding: 0.25em 1em 0.25em 1em;
+}
+
+.sf-toolbar .sf-toolbar-status, .sf-toolbar .sf-toolbar-icon {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.sf-toolbar-info .sf-toolbar-info-piece > *:first-child
+{
+    padding: 0.25em 0.5em 0.25em 1em;
+}
+.sf-toolbar-info .sf-toolbar-info-piece:first-child > *:first-child {
+    padding-top: 0.75em !important;
+    padding-left: 1em !important;
+    padding-right: 0.5em;
+    padding-bottom: 0.5em;
+}
+.sf-toolbar-info .sf-toolbar-info-piece:first-child > *:last-child {
+    padding-top: 0.75em !important;
+    padding-right: 1em !important;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+}
+.sf-toolbar-info .sf-toolbar-info-piece:last-child > *:first-child {
+    padding-bottom: 0.75em !important;
+    padding-left: 1em !important;
+    padding-top: 0.5em;
+    padding-right: 0.5em;
+}
+.sf-toolbar-info .sf-toolbar-info-piece:last-child > *:last-child {
+    padding-bottom: 0.75em !important;
+    padding-right: 1em !important;
+    padding-left: 1em;
+    padding-top: 0.5em;
+}
+.sf-toolbar-block .sf-toolbar-info-piece {
+    border-bottom: 0;
+}
+
+.sf-toolbar-info .sf-toolbar-info-piece:first-child > * { padding:0; padding-right:1.5em;}
+.sf-toolbar-info .sf-toolbar-info-piece:last-child > * { padding:0; padding-right:1.5em;}
+.sf-toolbar-info .sf-toolbar-info-piece > *:first-child {  text-align:right; }
+.sf-toolbar-info .sf-toolbar-info-piece > *:last-child {  text-align:left; }
+
+.sf-toolbar-block .sf-toolbar-info-piece > *
+{
+    padding: 1em !important;
+}
+
+.sf-toolbar-block .sf-toolbar-info-info:last-child
+{
+    padding-bottom: 1.25em;
+}
+.sf-toolbar-block .sf-toolbar-info-info
+{
+    background: #222C;
+    border-radius: 1em;
+    padding: 2em;
+}
+.sf-toolbar-info-piece
+{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: #222C !important;
+}
+.sf-toolbar-block .sf-toolbar-info-piece .sf-toolbar-ajax-requests .sf-toolbar-status
+{
+    border-radius: 1em;
+}
+
+.sf-toolbar-info-piece:first-child:not(:last-child) {
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.sf-toolbar-info-piece:last-child:not(:first-child) {
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.sf-toolbar-info-piece:only-child {
+    border-radius: 1em;
+}
+
+.sf-toolbar-block:hover .sf-toolbar-icon, .sf-toolbar-block.sf-toolbar-block-right:hover .sf-toolbar-icon
+{
+    box-shadow: 1px 0 0 #2225, inset 0 -1px 0 #2225;
+    border-radius: 1em;
+}
+
+.sf-toolbarreset .sf-toolbar-toggle-button {
+    height: 36px;
+    width: 36px;
+}
+
+.sf-toolbar.sf-toolbar-closed .sf-toolbarreset .sf-toolbar-toggle-button {
+    height: 40px;
+    width: 40px;
+}
+
+.sf-toolbar-block .sf-toolbar-info-group
+{
+    border-bottom: 0;
+}
+
+.sf-toolbar-block.sf-toolbar-block-right .sf-toolbar-info-group { margin-right: 0.6em;}
+.sf-toolbar-block.sf-toolbar-block-right .sf-toolbar-info .sf-toolbar-info-group .sf-toolbar-info-piece > *:last-child {
+    line-height: 1.9;
+    padding-right: 1em !important;
+    width: calc(100% - 1.5em);
+}
+
+.sf-toolbar-block.sf-toolbar-block-right .sf-toolbar-info .sf-toolbar-info-group .sf-toolbar-info-piece > *:last-child > :last-child {
+    width: auto;
+    padding-right: 4em !important;
+}
+.sf-toolbar-block.sf-toolbar-block-right .sf-toolbar-info .sf-toolbar-info-group .sf-toolbar-info-piece.sf-toolbar-info-php-ext > *:last-child
+{
+    width:auto;
+    line-height:auto;
+    margin: 0.5em;
+    padding: 2px 5px;
+}
+
+.sf-toolbar-block .sf-toolbar-info-group .sf-toolbar-info-piece.sf-toolbar-info-php-ext .sf-toolbar-status{
+    height: 25px;
+    border-radius:1em;
+}
+
+.sf-toolbar-block.sf-toolbar-block-right .sf-toolbar-info .sf-toolbar-info-group .sf-toolbar-info-piece > *
+{
+    height:25px;
+}
+.sf-toolbar-info .sf-toolbar-info-piece.sf-toolbar-info-php-ext
+{
+    background: #222C;
+}
+.sf-toolbar-info .sf-toolbar-info-piece.sf-toolbar-info-php-ext > *
+{
+    background: transparent;
+}
+
+.sf-toolbar-block.sf-toolbar-block-right .sf-toolbar-info .sf-toolbar-info-group .sf-toolbar-info-piece > a
+{
+padding:0;
+}
+
+.sf-toolbar-block.sf-toolbar-block-right .sf-toolbar-info .sf-toolbar-info-group .sf-toolbar-info-piece > *{
+    line-height: 1.9;
+}
+
+.sf-toolbar-block .sf-toolbar-info-group .sf-toolbar-info-piece .sf-toolbar-status + .sf-toolbar-status {
+    margin-left: 0;
+}
+.sf-toolbar-info-group .sf-toolbar-info-piece:first-child { width:100%;}
+
+.sf-toolbar.sf-toolbar-closed .sf-toolbarreset .sf-toolbar-toggle-button {
+    box-shadow: 1px 0 0 #2225, inset 0 -1px 0 #2225;
+    background-color: #222C;
+    margin:0;
+    border-radius:1em;
+    border:0;
+    margin-top: -0.5em;
+    margin-right: -6em;
+    padding-right: 2em;
+}
+
+.sf-toolbarreset .sf-toolbar-toggle-button
+{
+    margin-top: 0em;
+    margin-right: -6em;
+    padding-right: 2em;
+}
+
+.sf-toolbar-toggle-button::after
+{
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+
+    background: linear-gradient(to right, #999 0 1px, transparent 0px 6px, #999 6px 9px);
+    transform: translateY(-50%);
+    width: 7px;
+    height: 22px;
+
+    cursor: grab;
+}
+
+/* The handle carries the toolbar: a finger on it moves the toolbar, it does
+   not scroll the page (floating.js). */
+.sf-toolbarreset .sf-toolbar-toggle-button { touch-action: none; }
+
+/* A finger rather than a mouse: a handle the size of a fingertip, a grip and
+   a resizing edge easier to find. */
+@media (pointer: coarse) {
+    .sf-toolbarreset .sf-toolbar-toggle-button {
+        height: 48px;
+        width: 48px;
+        padding-right: 2.75em;
+    }
+    .sf-toolbar.sf-toolbar-closed .sf-toolbarreset .sf-toolbar-toggle-button {
+        height: 52px;
+        width: 52px;
+        padding-right: 2.75em;
+    }
+    .sf-toolbar-toggle-button::after {
+        right: 14px;
+        width: 10px;
+        height: 28px;
+        background: linear-gradient(to right, #bbb 0 2px, transparent 2px 8px, #bbb 8px 10px);
+    }
+    .sf-toolbarreset::before {
+        width: 10px;
+        min-width: 10px;
+    }
+}
+
+.sf-toolbar-toggle-button .sf-toolbar-icon-closed svg
+{
+    color:white;
+    height:28px;
+    margin-top:1px
+}
+
+.sf-toolbar-block-spacer:last-of-type {
+  flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sf-toolbar-block .sf-toolbar-icon,
+.sf-toolbar-block-config .sf-toolbar-icon .sf-toolbar-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sf-toolbar-block-time .sf-toolbar-icon { padding: 0 8px 0 8px; }
+.sf-toolbar-block .sf-toolbar-icon > .sf-toolbar-value,
+.sf-toolbar-block .sf-toolbar-icon .sf-toolbar-label { padding: 0 2px; }
+
+.sf-toolbar-block { max-width:100%; }
+.sf-toolbar-block .sf-toolbar-icon img,
+.sf-toolbar-block .sf-toolbar-icon svg
+{
+    top:0;
+    min-height: 20px;
+    min-width: 20px;
+}
+
+.sf-toolbar-block {
+    max-width: initial;
+}
+
+.sf-toolbar-block:hover .sf-toolbar-info, .sf-toolbar-block.hover .sf-toolbar-info
+{
+    max-width:100% !important;
+}
+@media all and (max-width: 1024px)
+{
+  .sf-toolbar-block .sf-toolbar-icon img, .sf-toolbar-block .sf-toolbar-icon svg{
+      min-height: 25px;
+      min-width: 25px;
+  }
+}
+
+.sf-minitoolbar
+{
+  z-index: inherit;
+  border-top-left-radius: 1em;
+  box-shadow: 0px 0px 3px #0008;
+  color:inherit;
+  background-color: #FFFA;
+
+}
+.sf-toolbar-block .sf-toolbar-info-piece .sf-toolbar-ajax-requests .sf-toolbar-status
+{
+    padding: 1px 0 !important;
+}
+
+.sf-minitoolbar svg, .sf-minitoolbar img { color:inherit; }
+.sf-minitoolbar button
+{
+  height:auto;
+  cursor: pointer;
+}
+
+.sf-toolbar-block.sf-toolbar-block-ajax .sf-toolbar-info {
+    margin-bottom: 0;
+    padding-bottom: 3em;
+    padding-top: 0;
+}
+
+.sf-toolbar-block-ajax .sf-toolbar-info, .sf-toolbar-block-ajax.hover .sf-toolbar-info
+{
+    padding-right:1em !important;
+    border-radius: 1em;
+}
+
+.sf-toolbar-block-ajax .sf-toolbar-info { padding-right: 0 !important; }
+.sf-toolbar-block-ajax .sf-toolbar-info .sf-toolbar-info-piece:last-child > *:last-child
+{
+    margin:0;
+}
+
+.sf-toolbar-block-ajax .sf-toolbar-info th, .sf-toolbar-block-ajax .sf-toolbar-info td
+{
+    background: none;
+    border: none;
+    font-size: 12px;
+}
+
+.sf-toolbar-block-ajax .sf-toolbar-info table
+{
+    margin:1em;
+    border: none;
+    border-radius: 0;
+}
+.sf-toolbar-block-ajax .sf-toolbar-info-piece:first-child
+{
+    background: #222C;
+}
+
+.sf-toolbar-block .sf-toolbar-info-piece .sf-toolbar-ajax-requests .sf-toolbar-status { font-size:12px; }
+.sf-toolbar-block-ajax .sf-toolbar-info, .sf-toolbar-block-ajax.hover .sf-toolbar-info { overflow-x:scroll; }
+.sf-toolbar-block-ajax .sf-toolbar-ajax-requests {
+    border-radius: 1em;
+    background-color: #222C;
+}
+.sf-toolbar-block .sf-toolbar-info-piece .sf-toolbar-ajax-requests .sf-toolbar-status
+{
+    width: 100%;
+}
+.sf-toolbar-block-ajax .sf-toolbar-info th, .sf-toolbar-block-ajax .sf-toolbar-info td
+{
+    padding:4px;
+    width: 100%;
+}
+
+.sf-toolbar.sf-toolbar-closed .sf-toolbarreset .sf-toolbar-block
+{
+    display: none !important;
+}
+
+.sf-toolbar-block-ajax .sf-toolbar-info th, .sf-toolbar-block-ajax .sf-toolbar-info td
+{
+    padding: 0.5em;
+    width: 100%;
+}
+
+.sf-toolbar-block-ajax .sf-toolbar-info th:nth-child(5), .sf-toolbar-block-ajax .sf-toolbar-info td:nth-child(5)
+{
+    padding-left: 5px;
+}
+.sf-toolbar-block-ajax .sf-toolbar-info th:nth-child(5), .sf-toolbar-block-ajax .sf-toolbar-info td:nth-child(5)
+{
+    padding:0;
+    line-height: 2.5;
+}
+.sf-toolbar-block-ajax .sf-toolbar-status
+{
+    padding:2px 0;
+}
+
+/* The toolbar's lengths are in em: counted on its own type size, not on the
+   size the debugged page gives its text, and never wider than the window. */
+.sf-toolbar { font-size: 11px; }
+.sf-toolbarreset { width: min(calc(95vw - 4em), calc(100vw - 12em)); }
+
+/* A toolbar moved into the upper half of the window opens its details downwards. */
+.sf-toolbarreset.inverted .sf-toolbar-block .sf-toolbar-info,
+.sf-toolbarreset.inverted .sf-toolbar-block:hover .sf-toolbar-info,
+.sf-toolbarreset.inverted .sf-toolbar-block.hover .sf-toolbar-info {
+    bottom: auto;
+    top: 35px;
+    border-radius: 0 1em 1em 1em;
+}
+
+/* A narrow window or a finger: the toolbar is one piece. The handle is the
+   right end of the pill, not a box beside it, so it can neither come apart
+   from the pill nor be pushed out of the window; the pill spans the window,
+   its blocks scroll sideways inside it and end where the handle starts, and it
+   sits above the bottom of the screen a phone keeps for itself
+   (env(safe-area-inset-bottom)). Closed, the handle alone is left, in the
+   bottom right corner. */
+@media (max-width: 767px), (pointer: coarse) {
+    .sf-toolbar {
+        --profiler-pack-handle: 36px;
+        --profiler-pack-grip: 22px;
+        left: calc(0.75em + env(safe-area-inset-left, 0px));
+        right: calc(0.75em + env(safe-area-inset-right, 0px));
+        bottom: 0;
+        margin: 0 0 calc(0.75em + env(safe-area-inset-bottom, 0px)) 0;
+    }
+    .sf-toolbar .sf-toolbarreset {
+        box-sizing: content-box;
+        width: auto;
+        max-width: calc(100% - 1em - var(--profiler-pack-handle) - var(--profiler-pack-grip));
+        margin: 0 calc(var(--profiler-pack-handle) + var(--profiler-pack-grip)) 0 auto;
+        padding: 0.25em 0 0.25em 1em;
+        border-radius: 1em 0 0 1em;
+        overflow-x: auto;
+        overflow-y: hidden;
+        /* Opened or closed at once: the handle stays under the finger for the second tap. */
+        transition: none;
+    }
+    .sf-toolbar:not(.sf-toolbar-closed) .sf-toolbarreset .sf-toolbar-toggle-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: var(--profiler-pack-handle);
+        height: auto;
+        margin: 0;
+        padding: 0 var(--profiler-pack-grip) 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #222C;
+        border-radius: 0 1em 1em 0;
+        box-shadow: inset 0 1px 0 #222C, 0 -1px 0 rgba(0, 0, 0, 0.5);
+    }
+    .sf-toolbar.sf-toolbar-closed {
+        left: auto;
+    }
+    .sf-toolbar.sf-toolbar-closed .sf-toolbarreset {
+        width: auto !important;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .sf-toolbar.sf-toolbar-closed .sf-toolbarreset .sf-toolbar-toggle-button {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 0;
+    }
+    /* A block's details: from the pill's left end, never wider than it. */
+    .sf-toolbar .sf-toolbar-block:hover .sf-toolbar-info,
+    .sf-toolbar .sf-toolbar-block.hover .sf-toolbar-info {
+        left: 0 !important;
+        right: auto;
+        max-width: 100% !important;
+        overflow-x: auto;
+    }
+}
+
+/* Under a finger the pill, and so the handle that spans its height, is
+   48px high: a fingertip's target (Material 48, Apple and WCAG 44). */
+@media (pointer: coarse) {
+    .sf-toolbar {
+        --profiler-pack-handle: 48px;
+        --profiler-pack-grip: 30px;
+    }
+    .sf-toolbar:not(.sf-toolbar-closed) .sf-toolbarreset {
+        min-height: calc(48px - 0.5em);
+        align-items: center;
+    }
+}

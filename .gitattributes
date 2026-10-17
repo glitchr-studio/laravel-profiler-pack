@@ -1,0 +1,9 @@
+# Not in the archive an application installs: the tests, the documentation
+# and the CI.
+/tests              export-ignore
+/docs               export-ignore
+/.github            export-ignore
+/.gitattributes     export-ignore
+/.gitignore         export-ignore
+/phpunit.xml.dist   export-ignore
+/composer.lock      export-ignore
