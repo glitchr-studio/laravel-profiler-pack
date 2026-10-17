@@ -520,7 +520,7 @@ final class ProfilerBar
         ];
 
         return [
-            'name' => 'config',
+            'name' => 'telescope',
             'right' => true,
             'status' => $telescope['recording'] ? null : 'yellow',
             'icon' => 'telescope',

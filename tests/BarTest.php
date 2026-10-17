@@ -92,6 +92,7 @@ final class BarTest extends TestCase
         self::assertStringNotContainsString('sf-toolbar-block-queries', $bar);
         self::assertStringNotContainsString('sf-toolbar-block-logger', $bar);
         self::assertStringContainsString('<span class="sf-toolbar-value">Telescope off</span>', $bar);
+        self::assertStringContainsString('sf-toolbar-block sf-toolbar-block-telescope sf-toolbar-status-yellow sf-toolbar-block-right', $bar);
         self::assertStringContainsString('off: not recording this request', $bar);
         self::assertStringNotContainsString('/telescope/requests/', $bar, 'No entry to open.');
         self::assertSame(0, DB::table('telescope_entries')->where('type', 'request')->count());
