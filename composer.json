@@ -1,0 +1,48 @@
+{
+    "name": "glitchr/laravel-profiler-pack",
+    "description": "A floating debug bar for Laravel, read from Laravel Telescope: status, route, time, memory, queries, logs, exceptions, cache, mail and jobs of the request, each block a link into /telescope. Movable, one piece on a phone, on by default in local.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "telescope", "profiler", "debug bar", "toolbar", "debug", "dev"],
+    "homepage": "https://github.com/glitchr-studio/laravel-profiler-pack",
+    "authors": [
+        {
+            "name": "Marco Meyer",
+            "email": "marco.meyer@glitchr.io"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "illuminate/contracts": "^12.0|^13.0",
+        "illuminate/http": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0",
+        "illuminate/view": "^12.0|^13.0",
+        "laravel/telescope": "^5.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0|^11.0",
+        "phpunit/phpunit": "^11.5|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Glitchr\\LaravelProfilerPack\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Glitchr\\LaravelProfilerPack\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Glitchr\\LaravelProfilerPack\\ProfilerPackServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

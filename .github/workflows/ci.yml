@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: ['1.x']
+  pull_request:
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { php: '8.2', laravel: '12.*' }
+          - { php: '8.4', laravel: '12.*' }
+          - { php: '8.3', laravel: '13.*' }
+          - { php: '8.4', laravel: '13.*' }
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: pdo_sqlite
+          coverage: none
+
+      - name: Install
+        run: >
+          composer update --no-interaction --no-progress
+          --with "laravel/framework:${{ matrix.laravel }}"
+          --with "illuminate/support:${{ matrix.laravel }}"
+
+      - name: Tests
+        run: vendor/bin/phpunit
