@@ -4,6 +4,12 @@ on:
   push:
     branches: ['1.x']
   pull_request:
+  workflow_dispatch:
+  # release.yml runs this CI on a tag before the release.
+  workflow_call:
+
+permissions:
+  contents: read
 
 jobs:
   tests:
@@ -18,9 +24,9 @@ jobs:
           - { php: '8.3', laravel: '13.*' }
           - { php: '8.4', laravel: '13.*' }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: ${{ matrix.php }}
           extensions: pdo_sqlite
